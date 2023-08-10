@@ -11,6 +11,9 @@ const conn = require('./db/conn');
 const Tought = require('./models/Tought');
 const User = require('./models/User');
 
+//Import Routes
+const routes = require('./routes/toughtsRoutes');
+
 // Handlebars Middleware
 app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
@@ -55,6 +58,9 @@ app.use((req, res, next) => {
     next();
 
 });
+
+//Routes
+app.use('/', routes);
 
 conn
     .sync()
