@@ -13,6 +13,7 @@ const User = require('./models/User');
 
 //Import Routes
 const routes = require('./routes/toughtsRoutes');
+const authRoutes = require('./routes/AuthRoutes');
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs.engine());
@@ -61,6 +62,7 @@ app.use((req, res, next) => {
 
 //Routes
 app.use('/', routes);
+app.use('/', authRoutes);
 
 conn
     .sync()
