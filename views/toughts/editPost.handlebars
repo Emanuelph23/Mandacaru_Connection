@@ -1,0 +1,18 @@
+<a href="/perfil" class="btn-back">Voltar</a>
+<div class="post-form-container">
+    <h2>Editar Post</h2>
+    <form action="/edit/post" method="post">
+        <input type="hidden" name="id" value="{{post.id}}">
+        <div class="form-control">
+            <label for="title">Título:</label>
+            <input type="text" name="title" placeholder="Digite o título do Post" value="{{post.title}}">
+        </div>
+        <div class="form-control">
+            <label for="description">Descrição do post:</label>
+            <textarea name="description" id="description" cols="30" rows="10" placeholder="Descreva sobre o seu Post">{{post.description}}</textarea>
+        </div>
+        <div class="form-submit">
+            <input class="btn btn-primary" type="submit" value="Editar Post">
+        </div>
+    </form>
+</div>

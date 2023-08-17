@@ -1,0 +1,46 @@
+<div class="home-posts">
+    <div class="order-container">
+        <p>Ordenar por:</p>
+        <form action="/posts" method="get">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="New">
+            <button type="submit"><i class="bi bi-arrow-up-square-fill"></i></button>
+        </form>
+        <form action="/posts" method="get">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="Old">
+            <button type="submit"><i class="bi bi-arrow-down-square-fill"></i></button>
+        </form>
+        <a href="/posts">Limpar</a>
+    </div>
+    <form class="search-posts" action="/posts" method="get">
+        <i class="bi bi-search"></i>
+        <input type="text" name="search" placeholder="Pesquisar ....">
+        <input type="submit" id="btn-search" value="Buscar">
+    </form>
+    <a class="btn-add btn" href="/addPost" ><i class="bi bi-plus-lg"></i> Add Publicação</a>
+</div>
+<div class="home-header">
+    {{#if search}}
+        <h2>
+             Resultados: {{#if postsQty}}{{postsQty}} {{else}} Ops! não encontramos {{/if}} para {{search}}.
+        </h2>
+    {{else}}
+        <h2>Publicações</h2>
+    {{/if}}
+    <div class="posts-container">
+        <ul>
+            {{#each posts}}
+                <li>
+                    <div class="info-posts">
+                        <p>@{{this.userName}}</p>
+                        <p>{{this.dateFormat}}</p>
+                    </div>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.description}}</p>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+

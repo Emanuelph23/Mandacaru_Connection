@@ -1,0 +1,31 @@
+<div>
+    <div class="title-perfil">
+        <div class="info-user">
+            <p><i class="bi bi-person-circle"></i> Usuário:<span> {{userName}}</span></p>
+            <p><i class="bi bi-envelope-at-fill"></i> E-mail:<span> {{userEmail}}</span></p>
+        </div>
+        <a class="btn-primary btn" href="/addPost">Add Publicação</a>
+    </div>
+    <div class="perfil-container">
+        <h2>Posts Publicados</h2>
+            <ul>
+                {{#each postData}}
+                <li>
+                    <p>@{{this.userName}}</p>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.description}}</p>
+                    <div class="actions-perfil">
+                        <a href="/edit/post/{{this.id}}" class="btn btn-edit">Editar</a>
+                        <form action="/delete/post" method="post">
+                            <input type="hidden" name="id" value="{{this.id}}">
+                            <input type="submit" value="Excluir" class="btn btn-delete">
+                        </form>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+            {{#if emptyToughts}}
+                <p class="empty-toughts">Você não possui nenhuma publicação, comece uma publicação <a href="/addPost">por aqui !</a></p>
+            {{/if}}
+    </div>
+</div>
