@@ -50,7 +50,7 @@ module.exports = class AuthController {
             req.flash('message', 'Usuário cadastrado com sucesso!');
 
             req.session.save(() => {
-                res.render('toughts/dashboard');
+                res.redirect('/posts');
             });
 
         } catch (error) {
@@ -66,7 +66,7 @@ module.exports = class AuthController {
     static async logoutUser(req, res){
 
         req.session.destroy()
-        res.redirect('/');
+        res.redirect('/login');
 
     }
 
@@ -100,7 +100,7 @@ module.exports = class AuthController {
         req.flash('message', 'Autenticação realizada com sucesso!');
 
         req.session.save(() => {
-            res.render('toughts/dashboard');
+            res.redirect('/posts');
         });
 
     }
